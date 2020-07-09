@@ -17,6 +17,9 @@ secretGenerator:
 - name: nginx-secret
   literals:
   - password=prod-secret
+- name: token
+  files:
+    - secret.yml
 
 configMapGenerator:
 - name: nginx-config

@@ -2,10 +2,12 @@
 
 Inside `base` you will find an nginx deployment. Using Kustomize we can make a
 series of changes and additions to this base deployment. The `staging` folder
-swaps the deployment to use a staging image, as well as scaling the replicas
-down. The `prod` folder scales the replicas up and swaps the image to use a
-pinned version.
+swaps the deployment to use a staging image, scales the replicas, adds a
+configmap and secret.
+The `prod` folder does the same, but with different params more suitable
+for prod.
 
+To give this a go run `kubectl apply -k prod/`
 
 ## patchesStrategicMerge
 patchesStrategicMerge is a way of patching an existing value inside the base
