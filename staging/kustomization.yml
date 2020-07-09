@@ -1,0 +1,28 @@
+namePrefix: staging-
+
+commonLabels:
+  type: staging
+
+commonAnnotations:
+  note: staging
+
+bases:
+- ../base
+
+patchesStrategicMerge:
+- small-footprint.yml
+- staging-image.yml
+
+
+secretGenerator:
+- name: nginx-secret
+  literals:
+  - password=staging-secret
+- name: token
+  files:
+    - secret.yml
+
+configMapGenerator:
+- name: nginx-config
+  literals:
+  - username=staging

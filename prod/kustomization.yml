@@ -1,0 +1,24 @@
+namePrefix: prod-
+
+commonLabels:
+  type: prod
+
+commonAnnotations:
+  note: prod
+
+bases:
+- ../base
+
+patchesStrategicMerge:
+- large-footprint.yml
+- prod-image.yml
+
+secretGenerator:
+- name: nginx-secret
+  literals:
+  - password=prod-secret
+
+configMapGenerator:
+- name: nginx-config
+  literals:
+  - username=prod
